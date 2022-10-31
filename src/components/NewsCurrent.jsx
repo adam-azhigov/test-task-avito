@@ -51,7 +51,7 @@ function NewsCurrent() {
 
 
     return (
-        <div className='mx-auto w-2/3 mt-8 bg-gray-200 h-screen rounded-md '>
+        <div className='mx-auto w-2/3 mt-8 bg-gray-200  rounded-md '>
             <div className='p-10'>
                 <p className='text-2xl'> {news.title} </p>
                 <div>
