@@ -64,7 +64,9 @@ function NewsCurrent() {
 					</svg>
 				) : (
 					comments.map(comment => {
-						return <Comments comm={comment} key={comment.id} />;
+						return (
+							<Comments className={'ml-2'} comm={comment} key={comment.id} />
+						);
 					})
 				)}
 			</div>

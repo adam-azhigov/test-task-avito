@@ -29,12 +29,13 @@ function Comments({ comm }) {
 					dangerouslySetInnerHTML={{ __html: comm.text }}
 					className='ml-5 mt-5'
 				></div>
+				{openChildComments && comm.kids !== undefined && (
+					<button onClick={getChildComments} className='ml-10'>
+						ответы..
+					</button>
+				)}
 			</div>
-			{openChildComments && comm.kids !== undefined && (
-				<button onClick={getChildComments} className='ml-10'>
-					ответы..
-				</button>
-			)}
+
 			{kidsComments &&
 				kidsComments.map(item => {
 					return <Comments key={item.id} comm={item} className={'text-3xl'} />;
