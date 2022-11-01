@@ -30,6 +30,14 @@ function NewsCurrent() {
 		updateComments();
 	}, []);
 
+	if (loading) {
+		return (
+			<svg className='animate-bounce w-20 h-20 mx-auto text-3xl mt-20'>
+				<RiDownloadFill />
+			</svg>
+		);
+	}
+
 	return (
 		<div className='mx-auto w-2/3 mt-8 bg-gray-200  rounded-md '>
 			<div className='p-10'>
@@ -51,24 +59,20 @@ function NewsCurrent() {
 			</div>
 			<div>
 				{news.descendants > 0 ? (
-					<button
-						onClick={updateComments}
-						className='px-5 py-2 ml-10 bg-gray-700 text-white rounded shadow-xl'
-					>
-						Обновить
-					</button>
+					<>
+						<button
+							onClick={updateComments}
+							className='px-5 py-2 ml-10 bg-gray-700 text-white rounded shadow-xl'
+						>
+							Обновить
+						</button>
+						{comments?.map(comment => {
+							return (
+								<Comments className={'ml-2'} comm={comment} key={comment.id} />
+							);
+						})}
+					</>
 				) : null}
-				{loading ? (
-					<svg className='animate-bounce w-20 h-20 mx-auto text-3xl mt-20'>
-						<RiDownloadFill />
-					</svg>
-				) : (
-					comments.map(comment => {
-						return (
-							<Comments className={'ml-2'} comm={comment} key={comment.id} />
-						);
-					})
-				)}
 			</div>
 		</div>
 	);
