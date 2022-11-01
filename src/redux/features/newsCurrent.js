@@ -60,7 +60,10 @@ export const getCommentNews = id => {
 				throw new Error('Ошибка в запросе:');
 			}
 			const json = await response.json();
-			const promisses = json?.kids?.map(async id => {
+			if (json.kids == undefined) {
+				return;
+			}
+			const promisses = json.kids?.map(async id => {
 				return await fetch(
 					`https://hacker-news.firebaseio.com/v0/item/${id}.json`
 				).then(response => response.json());
