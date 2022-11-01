@@ -50,14 +50,14 @@ function News() {
 						<div key={item.id} className='w-full h-13'>
 							<div className='w-full'>
 								{index + 1 + '.'}
-								<Link to={`/news/${item.id}`} className='ml-1 text-[25px]'>
+								<Link to={`/news/${item?.id}`} className='ml-1 text-[25px]'>
 									{item.title}
 								</Link>
 							</div>
 							<div className='  pl-4'>
 								<div className=' flex ml-2'>
 									<span className='flex around mt-[3px]'>
-										<BiLike />
+										<BiLike className='mt-1' />
 										{item.score}
 									</span>
 									<span className='ml-1'>{'|'}</span>

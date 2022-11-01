@@ -20,9 +20,8 @@ function Comments({ comm }) {
 
 	return (
 		<div>
-			<div className='p-5 border-b-2 border-indigo-400'>
+			<div className={`p-5 ml-2  ${!openChildComments ? 'p-5 ml-2 ' : 'ml-8'}`}>
 				<div className='flex'>
-					{' '}
 					<BsFilePerson className='text-xl' /> {comm.by}
 				</div>
 				<div
@@ -31,14 +30,14 @@ function Comments({ comm }) {
 				></div>
 				{openChildComments && comm.kids !== undefined && (
 					<button onClick={getChildComments} className='ml-10'>
-						ответы..
+						показать ответ..
 					</button>
 				)}
 			</div>
 
 			{kidsComments &&
 				kidsComments.map(item => {
-					return <Comments key={item.id} comm={item} className={'text-3xl'} />;
+					return <Comments key={item.id} comm={item} />;
 				})}
 		</div>
 	);

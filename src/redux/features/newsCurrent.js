@@ -60,17 +60,15 @@ export const getCommentNews = id => {
 				throw new Error('Ошибка в запросе:');
 			}
 			const json = await response.json();
-			const promisses = json.kids?.map(id => {
-				return fetch(
+			const promisses = json?.kids?.map(async id => {
+				return await fetch(
 					`https://hacker-news.firebaseio.com/v0/item/${id}.json`
 				).then(response => response.json());
 			});
-
 			const result = await Promise.all(promisses);
 			dispatch({ type: 'comment/load/fulfilled', payload: result });
 		} catch (err) {
 			console.error(err);
 		}
 	};
-	window.location.reload();
 };

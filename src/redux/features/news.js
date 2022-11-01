@@ -31,7 +31,7 @@ export const loadNews = () => {
 				throw new Error('Ошибка в запросе:' + response.text);
 			}
 			const json = await response.json();
-			const promises = json.slice(0, 100).map(id => {
+			const promises = await json.slice(0, 100).map(id => {
 				return fetch(
 					`https://hacker-news.firebaseio.com/v0/item/${id}.json`
 				).then(response => response.json());
