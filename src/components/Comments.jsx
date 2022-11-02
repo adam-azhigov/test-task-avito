@@ -20,7 +20,7 @@ function Comments({ comm }) {
 
 	return (
 		<div>
-			<div className={`p-5 ml-2  ${!openChildComments ? 'p-5 ml-2 ' : 'ml-8'}`}>
+			<div className={`p-5 ml-2  ${openChildComments ? 'p-5 ml-8' : 'ml-3'}`}>
 				<div className='flex'>
 					<BsFilePerson className='text-xl' /> {comm.by}
 				</div>

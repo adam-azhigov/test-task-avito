@@ -30,14 +30,6 @@ function NewsCurrent() {
 		updateComments();
 	}, []);
 
-	if (loading) {
-		return (
-			<svg className='animate-bounce w-20 h-20 mx-auto text-3xl mt-20'>
-				<RiDownloadFill />
-			</svg>
-		);
-	}
-
 	return (
 		<div className='mx-auto w-2/3 mt-8 bg-gray-200  rounded-md '>
 			<div className='p-10'>
@@ -58,7 +50,7 @@ function NewsCurrent() {
 				</a>
 			</div>
 			<div>
-				{news.descendants > 0 ? (
+				{news.descendants !== 0 ? (
 					<>
 						<button
 							onClick={updateComments}
@@ -66,11 +58,15 @@ function NewsCurrent() {
 						>
 							Обновить
 						</button>
-						{comments?.map(comment => {
-							return (
-								<Comments className={'ml-2'} comm={comment} key={comment.id} />
-							);
-						})}
+						{loading ? (
+							<svg className='animate-bounce w-20 h-20 mx-auto text-3xl mt-20'>
+								<RiDownloadFill />
+							</svg>
+						) : (
+							comments?.map(comment => {
+								return <Comments comm={comment} key={comment.id} />;
+							})
+						)}
 					</>
 				) : null}
 			</div>
