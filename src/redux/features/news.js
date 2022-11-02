@@ -36,7 +36,6 @@ export const loadNews = () => {
 					`https://hacker-news.firebaseio.com/v0/item/${id}.json`
 				).then(response => response.json());
 			});
-
 			const result = await Promise.all(promises);
 			dispatch({ type: 'news/load/fulfilled', payload: result });
 		} catch (err) {

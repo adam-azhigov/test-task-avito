@@ -54,7 +54,7 @@ function NewsCurrent() {
 					<>
 						<button
 							onClick={updateComments}
-							className='px-5 py-2 ml-10 bg-gray-700 text-white rounded shadow-xl'
+							className='px-5 py-2 ml-10 bg-gray-700 text-white rounded hover:shadow-xl'
 						>
 							Обновить
 						</button>

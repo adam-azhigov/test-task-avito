@@ -20,7 +20,7 @@ function Comments({ comm }) {
 
 	return (
 		<div>
-			<div className={`p-5 ml-2  ${openChildComments ? 'p-5 ml-8' : 'ml-3'}`}>
+			<div className={`p-5 ml-2`}>
 				<div className='flex'>
 					<BsFilePerson className='text-xl' /> {comm.by}
 				</div>
@@ -29,7 +29,10 @@ function Comments({ comm }) {
 					className='ml-5 mt-5'
 				></div>
 				{openChildComments && comm.kids !== undefined && (
-					<button onClick={getChildComments} className='ml-10'>
+					<button
+						onClick={getChildComments}
+						className='px-2 py-1 ml-10 mt-5 bg-gray-700 text-white rounded hover:shadow-xl'
+					>
 						показать ответ..
 					</button>
 				)}
@@ -37,7 +40,11 @@ function Comments({ comm }) {
 
 			{kidsComments &&
 				kidsComments.map(item => {
-					return <Comments key={item.id} comm={item} />;
+					return (
+						<div className='ml-8 p-5'>
+							<Comments key={item.id} comm={item} />
+						</div>
+					);
 				})}
 		</div>
 	);
